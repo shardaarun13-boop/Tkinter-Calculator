@@ -1,0 +1,94 @@
+# I have use some of other logics to made it so it could be more attractive and some how complicate
+
+import tkinter as tk
+
+root = tk.Tk()
+root.title("Calculator")
+root.geometry("250x320")
+
+e = tk.Entry(root, width=25)
+e.place(x=10, y=10)
+
+def press1(): e.insert(tk.END, "1")
+def press2(): e.insert(tk.END, "2")
+def press3(): e.insert(tk.END, "3")
+def press4(): e.insert(tk.END, "4")
+def press5(): e.insert(tk.END, "5")
+def press6(): e.insert(tk.END, "6")
+def press7(): e.insert(tk.END, "7")
+def press8(): e.insert(tk.END, "8")
+def press9(): e.insert(tk.END, "9")
+def press0(): e.insert(tk.END, "0")
+
+def add():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "add"
+    f_num = int(first_number)
+    e.delete(0, tk.END)
+
+def sub():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "sub"
+    f_num = int(first_number)
+    e.delete(0, tk.END)
+
+def mul():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "mul"
+    f_num = int(first_number)
+    e.delete(0, tk.END)
+
+def div():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "div"
+    f_num = int(first_number)
+    e.delete(0, tk.END)
+
+def equal():
+    second_number = int(e.get())
+    e.delete(0, tk.END)
+
+    if math == "add":
+        e.insert(0, f_num + second_number)
+    elif math == "sub":
+        e.insert(0, f_num - second_number)
+    elif math == "mul":
+        e.insert(0, f_num * second_number)
+    elif math == "div":
+        e.insert(0, f_num / second_number)
+
+def clear():
+    e.delete(0, tk.END)
+
+
+tk.Button(root, text="1", width=5, command=press1).place(x=10, y=50)
+tk.Button(root, text="2", width=5, command=press2).place(x=80, y=50)
+tk.Button(root, text="3", width=5, command=press3).place(x=150, y=50)
+
+tk.Button(root, text="4", width=5, command=press4).place(x=10, y=90)
+tk.Button(root, text="5", width=5, command=press5).place(x=80, y=90)
+tk.Button(root, text="6", width=5, command=press6).place(x=150, y=90)
+
+tk.Button(root, text="7", width=5, command=press7).place(x=10, y=130)
+tk.Button(root, text="8", width=5, command=press8).place(x=80, y=130)
+tk.Button(root, text="9", width=5, command=press9).place(x=150, y=130)
+
+tk.Button(root, text="0", width=5, command=press0).place(x=10, y=170)
+tk.Button(root, text="+", width=5, command=add).place(x=80, y=170)
+tk.Button(root, text="-", width=5, command=sub).place(x=150, y=170)
+
+tk.Button(root, text="*", width=5, command=mul).place(x=10, y=210)
+tk.Button(root, text="/", width=5, command=div).place(x=80, y=210)
+tk.Button(root, text="=", width=5, command=equal).place(x=150, y=210)
+
+tk.Button(root, text="clear", width=20, command=clear).place(x=10, y=260)
+
+root.mainloop()
